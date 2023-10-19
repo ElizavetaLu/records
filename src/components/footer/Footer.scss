@@ -1,0 +1,36 @@
+@import "../../variables";
+
+.footer {
+    padding: 50px 40px;
+    background-color: #0e0e0e;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 20px;
+
+    &__logo {
+        width: 60px;
+    }
+
+    &__text {
+        font-size: 14px;
+        width: 100%;
+        max-width: 50%;
+        opacity: .6;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .footer {
+        &__logo {
+            width: 45px;
+        }
+
+        &__text {
+            font-size: 11px;
+            max-width: 70%;
+        }
+
+        padding: 30px 20px;
+    }
+}

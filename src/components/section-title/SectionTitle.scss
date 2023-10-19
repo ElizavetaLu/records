@@ -1,0 +1,11 @@
+.section-title{
+    font-size: 38px;
+    text-transform: capitalize;
+    text-align: center; 
+}
+
+@media screen and (max-width: 900px) {
+    .section-title{
+        font-size: 28px;  
+    }
+}

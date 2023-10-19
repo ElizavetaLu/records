@@ -1,0 +1,24 @@
+@import "./variables";
+
+body {
+  margin: 0;
+  background-color: $main_dark_color;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: transparent;
+  outline: none;
+  font-size: 16px; 
+  list-style: none;
+  border: none;
+  color: $main_light_color;
+  font-family: 'Roboto', sans-serif;
+  text-decoration: none;
+}
+
+button{
+  cursor: pointer;
+}

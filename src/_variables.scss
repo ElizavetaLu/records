@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+$main_dark_color: #181818;
+$main_light_color: #f8f8f8;
+
+$space_between_sections: 120px;
+$space_between_sections_mobile: 80px;
+
+@mixin container {
+    width: 100%;
+    max-width: 1400px;
+    padding-right: 40px;
+    padding-left: 40px;
+    margin: 0 auto;
+}
+$mobile_container_padding: 16px
