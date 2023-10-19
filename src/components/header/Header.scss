@@ -1,0 +1,29 @@
+@import "../../variables";
+
+.header{
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    right: 0;
+    @include container;
+    padding-top: 20px; 
+
+    &__logo{
+        width: 50px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .header{
+        &__logo{
+            width: 40px;
+        }
+    }
+}
+@media screen and (max-width: 650px) {
+    .header{
+        padding-left: $mobile_container_padding;
+        padding-right: $mobile_container_padding;
+    }
+}

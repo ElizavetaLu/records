@@ -1,0 +1,45 @@
+@import "../../../../variables";
+
+.bands {
+    margin-top: $space_between_sections;
+
+    &__title {
+        margin-bottom: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    &__list {
+        @include container;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 40px;
+    }
+
+    &__search-icon{
+        width: 30px;
+        transition: all .2s ease;
+
+        &:hover{
+            transform: scale(1.1);
+        }
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .bands {
+        margin-top: $space_between_sections_mobile;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .bands {
+        &__list {
+            padding-left: $mobile_container_padding;
+            padding-right: $mobile_container_padding;
+        }
+    }
+}

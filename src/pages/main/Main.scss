@@ -1,0 +1,11 @@
+@import "../../variables";
+
+.main {
+    margin-bottom: $space_between_sections; 
+}
+
+@media screen and (max-width: 900px) {
+    .main {
+        margin-bottom: $space_between_sections_mobile; 
+    }
+} 
