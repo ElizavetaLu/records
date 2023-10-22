@@ -1,0 +1,41 @@
+.nested-list {
+    max-height: 0;
+    overflow: hidden;
+    padding-left: 90px;
+
+    &--active {
+        max-height: fit-content;
+    }
+
+    &__item {
+        width: 80%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid #464646;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+
+        &:last-child {
+            border-bottom: none;
+            margin-bottom: 20px;
+        }
+    }
+
+    &__data {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    &__image {
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
+        background-size: cover;
+    }
+
+    &__title {}
+
+    &__time {}
+}
