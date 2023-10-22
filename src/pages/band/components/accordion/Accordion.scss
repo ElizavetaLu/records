@@ -1,0 +1,41 @@
+@import "../../../../variables";
+
+.accordion {
+    width: 90%;
+
+    &__item {
+        margin-bottom: 20px;
+        border-bottom: 1px solid #515151;
+
+        &:last-child {
+            margin-bottom: 0px;
+        }
+    }
+
+    &__button {
+        width: 100%;
+    }
+
+    &__data {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    &__button {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 6px;
+        padding-bottom: 6px;
+    }
+
+    &__image {
+        width: 70px;
+        height: 70px;
+        border-radius: 3px;
+        background-size: cover;
+    }
+}

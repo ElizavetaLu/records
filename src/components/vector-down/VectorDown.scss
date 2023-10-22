@@ -1,0 +1,21 @@
+@import "../../variables";
+
+.vector-down {
+    width: 25px; 
+
+    &__line {
+        display: inline-block;
+        width: 1.5px;
+        border-radius: 1px;
+        height: 15px;
+        background-color: $main_light_color;
+
+        &:first-child {
+            transform: rotateZ(-45deg) translateY(-9px) translateX(-8px);
+        }
+
+        &:last-child {
+            transform: rotateZ(45deg) translateY(2px) translateX(-3px);
+        }
+    } 
+}

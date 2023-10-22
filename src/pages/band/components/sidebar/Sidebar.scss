@@ -1,0 +1,15 @@
+.sidebar {
+    position: sticky; 
+    top: 25%;
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    &__item {
+        font-size: 20px;
+        text-transform: capitalize;
+    }
+}

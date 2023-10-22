@@ -3,6 +3,7 @@ const IMAGES = {
     search: new URL('./icons/search.png', import.meta.url).href,
     dump: new URL('./dump.jpg', import.meta.url).href,
     dummyCardImage: new URL('./backgrounds/dummy-card-img.jpg', import.meta.url).href,
+    bandBg: new URL('./unnamed.jpg', import.meta.url).href,
 }
 
 export default IMAGES;
