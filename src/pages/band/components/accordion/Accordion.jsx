@@ -1,32 +1,46 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import AccordionNestedList from "../accordion-nested-list/AccordionNestedList";
+import { setSongs } from "../../../../store/actions/actionCreators";
 import VectorDown from "../../../../components/vector-down/VectorDown";
 import IMAGES from "../../../../images/Images";
 import "./Accordion.scss";
 
 
+
 export default function Accordion({ data }) {
 
-    const [currentId, setCurrentId] = useState(null)
+    const [currentId, setCurrentId] = useState(null);
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        currentId && dispatch(setSongs(currentId));
+    }, [currentId])
+
+    const { songs } = useSelector(state => state.bands);
+
 
     return (
         <div className="accordion">
             {
-                data?.map((item, i) => {
+                data?.length > 0 && data?.map(({ id, name, image }) => {
 
-                    const isActive = currentId === i;
+                    const isActive = currentId === id;
+                    const imgUrl = `http://localhost:3003/images/${image}`;
+                    const currentImage = `url(${image ? imgUrl : IMAGES.dummyCardImage})`;
 
                     return (
-                        <div key={i} className="accordion__item">
-                            <button className="accordion__button" onClick={() => isActive ? setCurrentId(null) : setCurrentId(i)}>
+                        <div key={id} className="accordion__item">
+                            <button className="accordion__button" onClick={() => isActive ? setCurrentId(null) : setCurrentId(id)}>
                                 <div className="accordion__data">
-                                    <div className="accordion__image" style={{ backgroundImage: `url("${IMAGES.bandBg}")` }}></div>
-                                    <span className="accordion__title">{item}</span>
+                                    <div className="accordion__image" style={{ backgroundImage: currentImage }}></div>
+                                    <span className="accordion__title">{name}</span>
                                 </div>
                                 <VectorDown active={isActive} />
                             </button>
 
-                            <AccordionNestedList isActive={isActive}/>
+                            <AccordionNestedList data={songs} isActive={isActive} img={currentImage}/>
                         </div>
                     )
                 })

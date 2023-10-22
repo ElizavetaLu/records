@@ -1,13 +1,13 @@
-import Introduction from "./sections/introduction/Introduction";
+ import Introduction from "./sections/introduction/Introduction";
 import Bands from "./sections/bands/Bands";
-import "./Main.scss";
+import "./Main.scss"; 
 
 export default function Main() {
 
     return (
-        <div className="main"> 
+        <div className="main">
             <Introduction />
-            <Bands /> 
+            <Bands />
         </div>
     )
 }

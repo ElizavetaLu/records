@@ -1,10 +1,26 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setAlbums, setMembers } from "../../../../store/actions/actionCreators";
 import RoundedCard from "../../../../components/cards/rounded/RoundedCard";
 import Accordion from "../../components/accordion/Accordion";
 import Sidebar from "../../components/sidebar/Sidebar";
+import { useParams } from "react-router-dom";
 import "./BandInformation.scss";
 
 
 export default function BandInformation() {
+
+    const { id } = useParams()
+
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(setAlbums(id));
+        dispatch(setMembers(id));
+    }, [])
+
+    const { albums, members } = useSelector(state => state.bands)
+
     return (
         <section className="band-info">
             <div className="band-info__sidebar-container">
@@ -43,17 +59,18 @@ export default function BandInformation() {
 
                 <div className="band-info__block">
                     <h3 className="band-info__block-title">Albums</h3>
-                    <Accordion data={['First album name', 'Second album name', 'Third album name', 'Fourth album name', 'Fifth album name', 'Sixth album name']} />
+                    <Accordion data={albums} />
                 </div>
 
                 <div className="band-info__block">
                     <h3 className="band-info__block-title">Members</h3>
                     <ul className="band-info__list">
                         {
-                            [1, 2, 3, 4, 5].map(item => {
+                            members?.length > 0 && members.map(item => { 
+                                
                                 return (
-                                    <li key={item}>
-                                        <RoundedCard />
+                                    <li key={item.id}>
+                                        <RoundedCard {...item}/>
                                     </li>
                                 )
                             })
