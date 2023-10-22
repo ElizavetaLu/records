@@ -1,10 +1,21 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import SectionTitle from "../../../../components/section-title/SectionTitle";
-import IMAGES from "../../../../images/Images";
+import { setBands } from "../../../../store/actions/actionCreators";
 import BandCard from '../../../../components/cards/band/BandCard';
+import IMAGES from "../../../../images/Images";
 import "./Bands.scss";
 
 
 export default function Bands() {
+
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(setBands())
+    }, [])
+
+    const { bands } = useSelector(state => state.bands)
 
     return (
         <section className="bands">
@@ -15,12 +26,12 @@ export default function Bands() {
                 </button>
             </div>
 
-            <ul className="bands__list"> 
+            <ul className="bands__list">
                 {
-                    [...Array(20).keys()].map(item => {
+                    bands?.length > 0 && bands.map(item => {
                         return (
-                            <li key={item} className="bands__item">
-                                <BandCard />
+                            <li key={item.id} className="bands__item">
+                                <BandCard {...item}/>
                             </li>
                         )
                     })

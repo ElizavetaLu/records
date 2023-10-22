@@ -1,18 +1,33 @@
-import IMAGES from "../../../../images/Images";
 import "./AccordionNestedList.scss";
 
-export default function AccordionNestedList({ isActive }) {
+
+export default function AccordionNestedList({ data, isActive, img }) {
+
+    const countTime = time => {
+
+        const minutes = Math.floor(time / 60);
+        const seconds = time - minutes * 60;
+
+        const correctMin = minutes < 10 ? `0${minutes}` : minutes;
+        const correctSec = seconds < 10 ? `0${seconds}` : seconds;
+
+
+        return `${correctMin}:${correctSec}`;
+    }
+
+
     return (
         <ul className={`nested-list ${isActive && 'nested-list--active'}`}>
             {
-                [1, 2, 3, 4, 5, 6].map(item => {
+                data?.length > 0 && data.map(item => {
+
                     return (
-                        <li key={item} className="nested-list__item">
+                        <li key={item.id} className="nested-list__item">
                             <div className="nested-list__data">
-                                <div className="nested-list__image" style={{ backgroundImage: `url("${IMAGES.bandBg}")` }}></div>
-                                <span className="nested-list__title">Some song name</span>
+                                <div className="nested-list__image" style={{ backgroundImage: img }}></div>
+                                <span className="nested-list__title">{item.name}</span>
                             </div>
-                            <span className="nested-list__time">3:00</span>
+                            <span className="nested-list__time">{countTime(item.length)}</span>
                         </li>
                     )
                 })
