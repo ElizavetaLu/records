@@ -2,14 +2,14 @@ import {
     getBands,
     getAlbums,
     getSongs,
-    getMembers
+    getMembers,
+    getBandInformation
 } from "../../services";
 import {
     SET_BANDS,
-    SET_ALBUMS,
-    SET_MEMBERS,
-    SET_SONGS,
-    SET_GENRES
+    SET_GENRES,
+    SET_BAND_INFORMATION,
+    SET_BAND_SONGS
 } from "./types";
 
 export const setBands = () => async (dispatch) => {
@@ -17,8 +17,8 @@ export const setBands = () => async (dispatch) => {
 
         const { data } = await getBands();
 
-        const allGenres = data.map(item=> JSON.parse(item.genres)).flat()
-        const unicGenres = [...new Set(allGenres)] 
+        const allGenres = data.map(item => JSON.parse(item.genres)).flat()
+        const unicGenres = [...new Set(allGenres)]
 
         dispatch({
             type: SET_GENRES,
@@ -34,14 +34,21 @@ export const setBands = () => async (dispatch) => {
     }
 }
 
-export const setAlbums = id => async (dispatch) => {
+export const setBandInformation = id => async (dispatch) => {
     try {
 
-        const { data } = await getAlbums(id);
+        const band = await getBandInformation(id);
+        const members = await getMembers(id);
+        const albums = await getAlbums(id);
+
 
         dispatch({
-            type: SET_ALBUMS,
-            payload: data
+            type: SET_BAND_INFORMATION,
+            payload: {
+                band: band.data[0],
+                members: members.data,
+                albums: albums.data,
+            }
         })
 
     } catch (error) {
@@ -51,11 +58,9 @@ export const setAlbums = id => async (dispatch) => {
 
 export const setSongs = id => async (dispatch) => {
     try {
-
         const { data } = await getSongs(id);
-
         dispatch({
-            type: SET_SONGS,
+            type: SET_BAND_SONGS,
             payload: data
         })
 
@@ -63,18 +68,3 @@ export const setSongs = id => async (dispatch) => {
         console.log(error)
     }
 }
-
-export const setMembers = id => async (dispatch) => {
-    try {
-
-        const { data } = await getMembers(id);
-
-        dispatch({
-            type: SET_MEMBERS,
-            payload: data
-        })
-
-    } catch (error) {
-        console.log(error)
-    }
-} 

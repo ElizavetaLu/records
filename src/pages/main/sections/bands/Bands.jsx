@@ -3,8 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import SectionTitle from "../../../../components/section-title/SectionTitle";
 import { setBands } from "../../../../store/actions/actionCreators";
 import BandCard from '../../../../components/cards/band/BandCard';
+import Dummy from "../../../../components/text-dummy/Dummy";
 import IMAGES from "../../../../images/Images";
 import "./Bands.scss";
+
 
 
 export default function Bands() {
@@ -28,13 +30,15 @@ export default function Bands() {
 
             <ul className="bands__list">
                 {
-                    bands?.length > 0 && bands.map(item => {
-                        return (
-                            <li key={item.id} className="bands__item">
-                                <BandCard {...item}/>
-                            </li>
-                        )
-                    })
+                    bands?.length > 0
+                        ? bands.map(item => {
+                            return (
+                                <li key={item.id} className="bands__item">
+                                    <BandCard {...item} />
+                                </li>
+                            )
+                        })
+                        : <Dummy text="Seems like the list is empty..."/>
                 }
             </ul>
         </section>
