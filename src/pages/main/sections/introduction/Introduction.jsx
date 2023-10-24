@@ -1,13 +1,16 @@
 import { useSelector } from "react-redux";
-import RoundedCard from "../../../../components/cards/rounded/RoundedCard"
 import useToggle from "../../../../hooks/useToggle";
+import RoundedCard from "../../../../components/cards/rounded/RoundedCard"
+import Dummy from "../../../../components/text-dummy/Dummy";
 import "./Introduction.scss"
+
+
 
 export default function Introduction() {
 
     const [isGenresVisible, onToggle] = useToggle();
 
-    const { genres } = useSelector(state => state.bands)
+    const { genres } = useSelector(state => state.bands);
 
 
     return (
@@ -23,7 +26,8 @@ export default function Introduction() {
 
                 <ul className="introduction__list">
                     {
-                        genres?.length > 0 && genres.map((item, i) => { 
+                        genres?.length > 0 
+                        ? genres.map((item, i) => { 
 
                             if (!isGenresVisible && i > 5) return;
 
@@ -33,6 +37,7 @@ export default function Introduction() {
                                 </li>
                             )
                         })
+                        :<Dummy text="Seems like genres list is empty..."/>
                     }
                 </ul>
 

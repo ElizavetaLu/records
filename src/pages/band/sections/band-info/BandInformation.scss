@@ -4,25 +4,22 @@
     @include container;
     position: relative;
     display: flex;
-    margin-bottom: $space_between_sections;
+    margin-top: $space_between_sections;
 
     &__sidebar-container {
-        width: 25%;
+        width: 30%;
+    }
+
+    &__title{
+        font-size: 30px;
+        text-align: center;
     }
 
     &__content {
         width: 100%;
-    }
-
-    &__block {
-        margin-top: 70px;
-    }
-
-    &__block-text {
-        text-indent: 50px;
-        font-size: 20px;
-        margin-bottom: 10px;
-        opacity: .8;
+        display: flex;
+        flex-direction: column;
+        gap: 70px;
     }
 
     &__block-title {
@@ -36,5 +33,24 @@
         flex-wrap: wrap;
         justify-content: center;
         gap: 30px;
+    }
+
+    &__member {
+        position: relative;
+    }
+
+    &__past-member {
+        display: block;
+        position: absolute;
+        top: -10px;
+        right: -15px;
+        max-width: 72px;
+        padding: 5px 10px;
+        border-radius: 20px;
+        background-color: #939393cc;
+        font-size: 12px;
+        text-transform: uppercase;
+        white-space: wrap;
+        text-align: center;
     }
 }

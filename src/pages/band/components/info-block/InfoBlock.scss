@@ -1,0 +1,14 @@
+.info-block {
+    &__text {
+        text-indent: 50px;
+        font-size: 20px;
+        margin-bottom: 10px;
+        opacity: .8;
+    }
+
+    &__title {
+        margin-bottom: 20px;
+        font-size: 28px;
+        text-transform: capitalize;
+    }
+}

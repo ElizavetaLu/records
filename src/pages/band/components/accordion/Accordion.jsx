@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import AccordionNestedList from "../accordion-nested-list/AccordionNestedList";
 import { setSongs } from "../../../../store/actions/actionCreators";
+import AccordionNestedList from "../accordion-nested-list/AccordionNestedList";
 import VectorDown from "../../../../components/vector-down/VectorDown";
 import IMAGES from "../../../../images/Images";
 import "./Accordion.scss";
@@ -18,7 +18,7 @@ export default function Accordion({ data }) {
         currentId && dispatch(setSongs(currentId));
     }, [currentId])
 
-    const { songs } = useSelector(state => state.bands);
+    const { songs } = useSelector(state => state.currentBand);
 
 
     return (

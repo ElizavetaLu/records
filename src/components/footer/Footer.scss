@@ -1,6 +1,7 @@
 @import "../../variables";
 
 .footer {
+    margin-top: $space_between_sections;
     padding: 50px 40px;
     background-color: #0e0e0e;
     display: flex;
@@ -22,6 +23,7 @@
 
 @media screen and (max-width: 650px) {
     .footer {
+        margin-top: $space_between_sections-mobile;
         &__logo {
             width: 45px;
         }
